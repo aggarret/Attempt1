@@ -15,12 +15,12 @@ class CreateOrganizationsTable extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string("users_email");// creates "email" field in our database
-            $table->string('users_firstName');
-            $table->string('users_lastName');
-            $table->string('Tax_ID');
+            $table->string('Orgusers_email');// creates "email" field in our database
+            $table->string('Orgusers_firstName');
+            $table->string('Orgusers_lastName');
+            $table->string('OrgTax_ID');
             $table->string('Organization_name');
-            $table->string('password',60);
+            $table->string('Orgpassword',60);
             $table->rememberToken();
         });
     }

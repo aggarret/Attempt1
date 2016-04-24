@@ -28,8 +28,10 @@ class Usercontroller extends Controller
     {
     	$value = $request['type_of_user'];
 
-    	
-        return view('/login')->with('value', $value);
+    	if ($value == "Volunteer"){
+    		return view('/Volform');
+    	}
+    	return view('/Orgform');
     }
     public function Volunteersignup(Request $request) 
     {
@@ -58,25 +60,25 @@ class Usercontroller extends Controller
     	if (Auth::attempt(['users_email'=> $request['users_email'], 'password'=> $request['password']])) {
     		return redirect()-> route('dashboard');
     	}
-    	return redirect()->back();
+    	return back();
     }
     public function Organizationsignup(Request $request)
     {
     	
-		$users_email = $request['users_email']; // Email request for the user controller.  Will make it so we can store the named formed data for the 'Welcome' View.
-		$users_firstName = $request['users_firstName'];
-		$users_lastName = $request['users_lastName'];
-		$organization_name = $request['Organization_name'];
-		$Tax_ID = $request['Tax_ID'];
-		$password = bcrypt($request['password']);
+		$Orgusers_email = $request['Orgusers_email']; // Email request for the user controller.  Will make it so we can store the named formed data for the 'Welcome' View.
+		$Orgusers_firstName = $request['Orgusers_firstName'];
+		$Orgusers_lastName = $request['Orgusers_lastName'];
+		$Organization_name = $request['Organization_name'];
+		$OrgTax_ID = $request['OrgTax_ID'];
+		$Orgpassword = bcrypt($request['Orgpassword']);
 
 		$organization = new Organization();
-		$organization-> users_email = $users_email;
-		$organization-> users_firstName = $users_firstName; //costructs the first name filled 
-		$organization-> users_lastName = $users_lastName;
-		$organization-> Organization_name = $organization_name;
-		$organization-> Tax_ID = $Tax_ID;
-		$organization-> password = $password; // constructs the password 
+		$organization-> Orgusers_email = $Orgusers_email;
+		$organization-> Orgusers_firstName = $Orgusers_firstName; //costructs the first name filled 
+		$organization-> Orgusers_lastName = $Orgusers_lastName;
+		$organization-> Organization_name = $Organization_name;
+		$organization-> OrgTax_ID = $OrgTax_ID;
+		$organization-> Orgpassword = $Orgpassword; // constructs the password 
 
 		$organization->save();
 
@@ -88,7 +90,7 @@ class Usercontroller extends Controller
     public function Organizationsignin(Request $request)
     {
     	
-    	if (Auth::attempt(['users_email'=> $request['users_email'], 'password'=> $request['password']])) {
+    	if (Auth::attempt(['Orgusers_email'=> $request['Orgusers_email'], 'Orgpassword'=> $request['Orgpassword']])) {
     		return redirect()-> route('Orgdashboard');
     	}
     	return redirect()->back();

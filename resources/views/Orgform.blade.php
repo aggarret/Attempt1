@@ -6,17 +6,17 @@
       <form action= "/Organizationsignup" method="post">
         <h2>Register</h2><br>
         First name:<br>
-        <input type="text" class="form-control input-lg" name="users_firstName"><br>
+        <input type="text" class="form-control input-lg" name="Orgusers_firstName"><br>
         Last name:<br>
-        <input type="text" class="form-control input-lg" name="users_lastName"><br>
+        <input type="text" class="form-control input-lg" name="Orgusers_lastName"><br>
         Email:<br>
-        <input type="email" class="form-control input-lg" name="users_email"><br>
+        <input type="email" class="form-control input-lg" name="Orgusers_email"><br>
         Organization Name:<br>
         <input type="text" class="form-control input-lg" name="Organization_name"><br>
         Tax ID #:<br>
-        <input type="text" class="form-control input-lg" name="Tax_ID"><br>
+        <input type="text" class="form-control input-lg" name="OrgTax_ID"><br>
         Password:<br>
-        <input type="password" class="form-control input-lg" name="password"><br>
+        <input type="password" class="form-control input-lg" name="Orgpassword"><br>
         <input name="_token" type="hidden" id="_token" value="{{ csrf_token() }}" />
         <button type="submit">Join US!</button>
       </form>
@@ -25,9 +25,9 @@
       <form action="/Organizationsignin" method="post">
         <h2>Log in Here</h2><br>
         Email:<br>
-        <input type="email" class="form-control input-lg" name="users_email"><br>
+        <input type="email" class="form-control input-lg" name="Orgusers_email"><br>
         Password:<br>
-        <input type="password" class="form-control input-lg" name="password"><br>
+        <input type="password" class="form-control input-lg" name="Orgpassword"><br>
         <input name="_token" type="hidden" id="_token" value="{{ csrf_token() }}" />
         <button type="submit">Log in</button>
       </form>
