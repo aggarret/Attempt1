@@ -29,9 +29,18 @@ class Usercontroller extends Controller
     	$value = $request['type_of_user'];
 
     	if ($value == "Volunteer"){
-    		return view('/Volform');
+
+    		return redirect()->route('Volform');
     	}
-    	return view('/Orgform');
+    	return redirect()->route('Orgform');
+    }
+    public function Volform()
+    {
+    	return view ('/Volform');
+    }
+     public function Orgform()
+    {
+    	return view ('Orgform');
     }
     public function Volunteersignup(Request $request) 
     {

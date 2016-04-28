@@ -66,6 +66,14 @@ Route::get('/callback', 'SocialAuthController@callback');
 		'uses' => 'Usercontroller@Organizationsignin',
 		'as' => 'Organizationsignin'
 	]);
+	Route::get('/Orgform', [
+		'uses' => 'Usercontroller@Orgform',
+		'as' => 'Orgform'
+	]);
+	Route::get('/Volform', [
+		'uses' => 'Usercontroller@Volform',
+		'as' => 'Volform'
+	]);
     Route::post('/type_of_user', [
  	'uses' => 'Usercontroller@Type_of_user',
  	'as' => 'type_of_user',
