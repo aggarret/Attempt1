@@ -20,7 +20,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('Orgusers_lastName');
             $table->string('OrgTax_ID');
             $table->string('Organization_name');
-            $table->string('Orgpassword',60);
+            $table->string('password',60);
             $table->rememberToken();
         });
     }

@@ -69,7 +69,7 @@ class Usercontroller extends Controller
     	if (Auth::attempt(['users_email'=> $request['users_email'], 'password'=> $request['password']])) {
     		return redirect()-> route('dashboard');
     	}
-    	return back();
+    	return redirect()->back();
     }
     public function Organizationsignup(Request $request)
     {
@@ -79,7 +79,7 @@ class Usercontroller extends Controller
 		$Orgusers_lastName = $request['Orgusers_lastName'];
 		$Organization_name = $request['Organization_name'];
 		$OrgTax_ID = $request['OrgTax_ID'];
-		$Orgpassword = bcrypt($request['Orgpassword']);
+		$password = bcrypt($request['password']);
 
 		$organization = new Organization();
 		$organization-> Orgusers_email = $Orgusers_email;
@@ -87,7 +87,7 @@ class Usercontroller extends Controller
 		$organization-> Orgusers_lastName = $Orgusers_lastName;
 		$organization-> Organization_name = $Organization_name;
 		$organization-> OrgTax_ID = $OrgTax_ID;
-		$organization-> Orgpassword = $Orgpassword; // constructs the password 
+		$organization-> password = $password; // constructs the password 
 
 		$organization->save();
 
@@ -99,7 +99,7 @@ class Usercontroller extends Controller
     public function Organizationsignin(Request $request)
     {
     	
-    	if (Auth::attempt(['Orgusers_email'=> $request['Orgusers_email'], 'Orgpassword'=> $request['Orgpassword']])) {
+    	if (Auth::guard('organization')->attempt(['Orgusers_email'=> $request['Orgusers_email'], 'password'=> $request['password']])) {
     		return redirect()-> route('Orgdashboard');
     	}
     	return redirect()->back();

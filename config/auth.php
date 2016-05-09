@@ -36,14 +36,14 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'organization' => [
             'driver' => 'session',
             'provider' => 'organizations',
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'organizations',
+        'volunteer' => [
+            'driver' => 'session',
+            'provider' => 'volunteers',
         ],
 
         'web' => [

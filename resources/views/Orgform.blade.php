@@ -16,7 +16,7 @@
         Tax ID #:<br>
         <input type="text" class="form-control input-lg" name="OrgTax_ID"><br>
         Password:<br>
-        <input type="password" class="form-control input-lg" name="Orgpassword"><br>
+        <input type="password" class="form-control input-lg" name="password"><br>
         <input name="_token" type="hidden" id="_token" value="{{ csrf_token() }}" />
         <button type="submit">Join US!</button>
       </form>
@@ -27,7 +27,7 @@
         Email:<br>
         <input type="email" class="form-control input-lg" name="Orgusers_email"><br>
         Password:<br>
-        <input type="password" class="form-control input-lg" name="Orgpassword"><br>
+        <input type="password" class="form-control input-lg" name="password"><br>
         <input name="_token" type="hidden" id="_token" value="{{ csrf_token() }}" />
         <button type="submit">Log in</button>
       </form>
