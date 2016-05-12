@@ -44,6 +44,11 @@ class Usercontroller extends Controller
     }
     public function Volunteersignup(Request $request) 
     {
+        $this->validate($request, [
+            'users_email' => 'required|email|unique:volunteers',  //validates the request and looks for a unique user in the volunteer table 
+            'users_firstName' => 'required|max:120',
+            'password' => 'required|min:4',
+            ]); 
 		
 		$users_email = $request['users_email']; // Email request for the user controller.  Will make it so we can store the named formed data for the 'Welcome' View.
 		$users_firstName = $request['users_firstName'];
@@ -73,6 +78,11 @@ class Usercontroller extends Controller
     }
     public function Organizationsignup(Request $request)
     {
+        $this->validate($request, [
+            'Orgusers_email' => 'required|email|unique:organizations',  //validates the request and looks for a unique user in the volunteer table 
+            'OrgTax_ID' => 'required|max:120',
+            'password' => 'required|min:4',
+            ]); 
     	
 		$Orgusers_email = $request['Orgusers_email']; // Email request for the user controller.  Will make it so we can store the named formed data for the 'Welcome' View.
 		$Orgusers_firstName = $request['Orgusers_firstName'];

@@ -1,15 +1,31 @@
 @extends('includes.Head')
+
+
 <div class="container">
   <div class="row">
     <div class="col-md-6">
 		<form action= "/volunteer" method="post">
+			@if(count($errors) > 0)
+			<div class="row">
+				<div class="col-md-6 col-md-offset-4">
+					<ul>
+						@foreach($errors->all() as $error)
+						<li>{{$error}}<li>
+						@endforeach
+					</ul>
+				</div>
+			</div>
+			@endif
+
 		 <h2>Register</h2><br>
 		 First name:<br>
 		  <input type="text" name="users_firstName"><br>
 		  Last name:<br>
 		  <input type="text" name="users_lastName"><br>
+		<div class="form-group {{ $errors->has ('email') ? 'has->error' : '' }}">
 		   Email:<br>
-		  <input type="email" name="users_email"><br>
+		  <input class="form-control" type="email" name="users_email" id="email"><br>
+		</div>
 		  Password:<br>
 		  <input type="password" name="password" id="password" value="{{ Request::old('password') }}">
 		  <input type="hidden" name="_token" value="{{ csrf_token() }}">
