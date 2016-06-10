@@ -4,14 +4,18 @@ Head
 div {
   display:block;
 }
+
+body {
+  font-size: 14px;
+  font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
+  background-color: #E5E9ED;
+}
+
 header {
-  margin: 0 0 0 0;
-  padding:10px 0 10px 0;
   background-image:url("peak.jpg");
   background-position: right top;
   background-attachment: fixed;
   background-size: cover;
-  text-align: center;
 }
 .volunteer {
   margin: auto;
@@ -51,7 +55,6 @@ header {
 }
  a {
   text-decoration:none !important;
-  color: yellow;
   font-weight:800px;
   font-family: "Impact, Charcoal, sans-serif";
   text-align:center;
@@ -126,3 +129,26 @@ Footer
   background-image:url("big-sur.jpg");
   background-size: cover;
 }
+
+
+/* navbar/login */
+.loginMenu {
+  width: 250px;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a,
+.navbar-default .navbar-nav .open .dropdown-menu {
+    background-color: #F2F2F2;
+    color:#000000;
+  }
+
+ a.list-group-item.active:hover {
+  background-color: #000000;
+}
+
+#navlogin {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+

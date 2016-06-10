@@ -111,7 +111,13 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
+            'provider' => 'volunteers',
+            'email' => 'auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'organizations' => [
+            'provider' => 'organizations',
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,

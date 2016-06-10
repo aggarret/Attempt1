@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +12,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/rotating-card.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
     
 
@@ -23,4 +23,3 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <?php echo HTML::style('css/style.css'); ?>
-  </head>

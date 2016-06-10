@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Organization;
 
-use App\Volunteer;
+use App\Volunteer as Volunteer;
 
 use Auth;
+use DB;
 
 use App\Http\Requests;
 
@@ -17,11 +18,15 @@ class Usercontroller extends Controller
 {
 	public function getDashboard()
 	{
-		return view ('dashboard');
+		$user = Auth::volunteer();
+        return view ('dashboard')->with('user', $user);
 	}
 	public function getorgDashboard()
 	{
-		return view ('Organization_Dash');
+		$user = Auth::organization();
+        return view ('dashboard')->with('user', $user);
+
+        //return view ('Organization_Dash');
 	}
 
     public function Type_of_user(Request $request)
@@ -71,7 +76,8 @@ class Usercontroller extends Controller
      public function Volunteersignin(Request $request)
     {
     	
-    	if (Auth::attempt(['users_email'=> $request['users_email'], 'password'=> $request['password']])) {
+    	if (Auth::guard('volunteer')->attempt(['users_email'=> $request['users_email'], 'password'=> $request['password']] ))
+        {
     		return redirect()-> route('dashboard');
     	}
     	return redirect()->back();

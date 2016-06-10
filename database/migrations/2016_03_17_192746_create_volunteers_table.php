@@ -18,7 +18,14 @@ class CreateVolunteersTable extends Migration
             $table->string('users_email');// creates "email" field in our database
             $table->string('users_firstName');
             $table->string('users_lastName');
+
+            $table->integer('zipCode');
+            $table->integer('trackedHours');
+            $table->text('about');
+            $table->text('interests');
+
             $table->string('password');
+
             $table->rememberToken();
         });
     }

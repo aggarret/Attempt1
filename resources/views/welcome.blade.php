@@ -1,7 +1,5 @@
 @extends ('layouts.default')
-@section ('Head')
-  
-  <body>
+@section ('content')
     <div class= "container">
       <div class="row">
         <div class="col-sm-4">
@@ -23,6 +21,5 @@
     </br>
       <p>Voluback is an ambitious project attempting to promote suntanable volunteering through merchant based incentives.</p> 
     </div>
-   @include ('includes.hometiles') 
-@section ('Footer')
+   @include ('includes.hometiles')
 @endsection

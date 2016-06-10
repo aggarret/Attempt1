@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
  
 /*
@@ -29,6 +25,10 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
     
 Route::get('/redirect', 'SocialAuthController@redirect');
 Route::get('/callback', 'SocialAuthController@callback');
@@ -37,43 +37,61 @@ Route::get('/callback', 'SocialAuthController@callback');
     	return view('login');
     })->name('login');
 
-    Route::post('/volunteer', [ //'/signup' will be displayed in url when this post route is accessed.
-		'uses' => 'Usercontroller@Volunteersignup', //tells the method and contronler to use.
-		'as' => 'Volunteersignup',
+    //User form?
+    Route::get('/Volform', [
+		'uses' => 'Usercontroller@Volform',
+		'as' => 'Volform'
 	]);
-	
 
-	Route::get('/dashboard', [
-		'uses' => 'Usercontroller@getDashboard',
-		'as' =>'dashboard', //dashboard scan now be refered to in the view as dashbord.
-		//'middleware' => 'auth',  // makes this so that your dash bord calles the auth middle ware,   Meaning it can only be accessed once user is authenticated.
-	]);
-	Route::get('/Orgdashboard', [
-		'uses' => 'Usercontroller@getorgDashboard',
-		'as' =>'Orgdashboard', //dashboard can now be refered to in the view as dashbord.
-		//'middleware' => 'auth',  // makes this so that your dash bord calles the auth middle ware,   Meaning it can only be accessed once user is authenticated.
-	]);
-	Route::post('/Organizationsignup', [ //'/signup' will be displayed in url when this post route is accessed.
-		'uses' => 'Usercontroller@Organizationsignup', //tells the method and contronler to use.
-		'as' => 'Organizationsignup',
-	]);
+	//User signin
 	Route::post('/Volunteersignin', [ //'/signup' will be displayed in url when this post route is accessed.
 		'uses' => 'Usercontroller@Volunteersignin', //tells the method and contronler to use.
 		'as' => 'Volunteersignin',
 	]);
 
+	//User signup
+	Route::post('/volunteer', [ //'/signup' will be displayed in url when this post route is accessed.
+		'uses' => 'Usercontroller@Volunteersignup', //tells the method and contronler to use.
+		'as' => 'Volunteersignup',
+	]);
+	
+	//User dashboard
+	Route::get('/dashboard', [
+		'uses' => 'Usercontroller@getDashboard',
+		'middleware' => 'auth:volunteer',
+		'as' =>'dashboard',
+		 //dashboard scan now be refered to in the view as dashbord.
+		//'middleware' => 'auth',  // makes this so that your dash bord calles the auth middle ware,   Meaning it can only be accessed once user is authenticated.
+	]);
+
+	//Org Dashboard
+	Route::get('/Orgdashboard', [
+		'uses' => 'Usercontroller@getorgDashboard',
+		'middleware' => 'auth:organization',
+		'as' =>'Orgdashboard', //dashboard can now be refered to in the view as dashbord.
+		//'middleware' => 'auth',  // makes this so that your dash bord calles the auth middle ware,   Meaning it can only be accessed once user is authenticated.
+	]);
+
+	//Org Signup
+	Route::post('/Organizationsignup', [ //'/signup' will be displayed in url when this post route is accessed.
+		'uses' => 'OrganizationAuth\AuthController@Organizationsignup', //tells the method and contronler to use.
+		'as' => 'Organizationsignup',
+	]);
+
+	//Org Signin
 	Route::post('/Organizationsignin', [
 		'uses' => 'Usercontroller@Organizationsignin',
 		'as' => 'Organizationsignin'
 	]);
+
+
+
+	//Org form?
 	Route::get('/Orgform', [
 		'uses' => 'Usercontroller@Orgform',
 		'as' => 'Orgform'
 	]);
-	Route::get('/Volform', [
-		'uses' => 'Usercontroller@Volform',
-		'as' => 'Volform'
-	]);
+	
     Route::post('/type_of_user', [
  	'uses' => 'Usercontroller@Type_of_user',
  	'as' => 'type_of_user',
